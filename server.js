@@ -1,5 +1,15 @@
 const express = require("express");
+const connectDB = require("./config/db");
+
 const app = express();
+
+//Database connection
+connectDB();
+
+//initialize middleware
+//In oreder to access req body we have to use middleware
+app.use(express.json({ extended: false }));
+//it is used to accept json data
 
 app.get("/", (req, res) => res.json({ msg: "Welcome to Contact-Manager API" }));
 
